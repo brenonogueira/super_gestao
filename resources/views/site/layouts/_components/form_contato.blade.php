@@ -2,11 +2,11 @@
 {{ $slot }} {{--  passando parametro para componente  --}}
  <form method="POST" action={{ route('site.contato') }} > <!-- encaminhando form para rota /contato-->
      @csrf <!-- token csrf = cross-site request forgery / falsificação de solicitação entre sites) metodo post  -->
-     <input name="nome" type="text" placeholder="Nome" class="{{ $classe }}">  {{-- variável $classe vinda das views puxando css específico --}}
+     <input name="nome" value="{{ old('nome') }}" type="text" placeholder="Nome" class="{{ $classe }}">  {{-- variável $classe vinda das views puxando css específico --}}
      <br>
-     <input name="telefone" type="text" placeholder="Telefone" class="{{ $classe }}">
+     <input name="telefone" value="{{ old('telefone') }}" type="text" placeholder="Telefone" class="{{ $classe }}">
      <br>
-     <input name="email" type="text" placeholder="E-mail" class="{{ $classe }}">
+     <input name="email" value="{{ old('email') }}" type="text" placeholder="E-mail" class="{{ $classe }}">
      <br>
      <select name="motivo_contato" class="{{ $classe }}">
          <option value="">Qual o motivo do contato?</option>
@@ -15,7 +15,13 @@
          <option value="3">Reclamação</option>
      </select>
      <br>
-     <textarea name="mensagem" class="{{ $classe }}">Preencha aqui a sua mensagem</textarea>
+     <textarea name="mensagem" class="{{ $classe }}">{{ old('mensagem') != '' ? old('mensagem') : 'Preencha aqui a sua mensagem' }}</textarea>
      <br>
      <button type="submit" class="{{ $classe }}">ENVIAR</button>
  </form>
+
+ <pre>
+    <div style="position: absolute; top:10px; left:0px; width:100%; background-color:red">
+        {{print_r($errors)}}
+    </div>
+ </pre>

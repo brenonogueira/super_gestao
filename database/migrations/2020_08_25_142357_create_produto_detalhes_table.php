@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProdutoDetalhes extends Migration
+class CreateProdutoDetalhesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,6 +14,7 @@ class CreateProdutoDetalhes extends Migration
     public function up()
     {
         Schema::create('produto_detalhes', function (Blueprint $table) {
+            //colunas
             $table->id();
             $table->unsignedBigInteger('produto_id');
             $table->float('comprimento', 8, 2);
@@ -23,7 +24,7 @@ class CreateProdutoDetalhes extends Migration
 
             //constraint
             $table->foreign('produto_id')->references('id')->on('produtos');
-            $table->unique('produto_id'); //garante relacionamento de um pra um
+            $table->unique('produto_id');
         });
     }
 

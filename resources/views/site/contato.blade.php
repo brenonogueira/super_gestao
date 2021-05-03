@@ -3,7 +3,17 @@
 @section('titulo', 'Contato') {{-- section para definir titulo especifico da view e mostrando no template --}}
 
 @section('conteudo') {{-- criando section para conteudo exclusivo da view que está puxando o layout --}}
-    <div class="conteudo-pagina">
+
+@if(session()->get('message'))
+
+    <div  class="alert alert-{{session()->get('color')}} alert-dismissible fade show" role="alert">
+        <strong>{{session()->get('message')}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+@endif
+
+<div class="conteudo-pagina">
+
         <div class="titulo-pagina">
             <h1>Entre em contato conosco</h1>
         </div>
