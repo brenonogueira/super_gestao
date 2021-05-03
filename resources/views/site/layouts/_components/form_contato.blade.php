@@ -1,6 +1,6 @@
 
 {{ $slot }} {{--  passando parametro para componente  --}}
- <form action={{ route('site.contato') }} method="post"> <!-- encaminhando form para rota /contato-->
+ <form method="POST" action={{ route('site.contato') }} > <!-- encaminhando form para rota /contato-->
      @csrf <!-- token csrf = cross-site request forgery / falsificação de solicitação entre sites) metodo post  -->
      <input name="nome" type="text" placeholder="Nome" class="{{ $classe }}">  {{-- variável $classe vinda das views puxando css específico --}}
      <br>
