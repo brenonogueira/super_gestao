@@ -1,29 +1,19 @@
+@extends('site.layouts.basico')
 
-@extends('site.layouts.basico') {{-- puxando template do layout --}}
-@section('titulo', 'Contato') {{-- section para definir titulo especifico da view e mostrando no template --}}
+@section('titulo', $titulo)
 
-@section('conteudo') {{-- criando section para conteudo exclusivo da view que está puxando o layout --}}
-
-@if(session()->get('message'))
-
-    <div  class="alert alert-{{session()->get('color')}} alert-dismissible fade show" role="alert">
-        <strong>{{session()->get('message')}}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-@endif
-
-<div class="conteudo-pagina">
-
+@section('conteudo')
+    <div class="conteudo-pagina">
         <div class="titulo-pagina">
             <h1>Entre em contato conosco</h1>
         </div>
 
         <div class="informacao-pagina">
             <div class="contato-principal">
-                @component('site.layouts._components.form_contato', ['classe' => 'borda-preta']) {{-- criação da variável $classe para especificar css nas views diferentes -- }}
-                <p>Responderemos o mais rápido possível!</p>{{--  passando parametros específicos da view contato para o componente form  --}}
-                <p>Online 24h</p>
-                @endcomponent  {{-- inserindo componente form_contato --}}
+                @component('site.layouts._components.form_contato', ['classe' => 'borda-preta', 'motivo_contatos' => $motivo_contatos])
+                    <p>A nossa equipe analisará a sua mensagem e retornaremos o mais brevemente possível!</p>
+                    <p>Nosso tempo médio de resposta é de 48 horas.</p>
+                @endcomponent
             </div>
         </div>
     </div>
