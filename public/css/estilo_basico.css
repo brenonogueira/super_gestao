@@ -187,10 +187,10 @@ button:hover {
 .localizacao {
     width: 33.333%;
     border-top: solid 1px #ccc;
-    float: left;
+    float: right;
     text-align: center;
     background-color: #f8f8f8;
-    height: 200px;
+    height: 150px;
 }
 
 .redes-sociais,

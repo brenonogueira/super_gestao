@@ -15,16 +15,15 @@ class AutenticacaoMiddleware {
      */
     public function handle(Request $request, Closure $next, $metodo_autenticacao) {
 
-        echo $metodo_autenticacao;
-        //validando parametros passados
-        if ($metodo_autenticacao == 'perfil') {
-            echo 'Usuário: perfil';
-        }
-        //validando acesso do usuário pela middleware autenticação
-        if (false) {
+        session_start();
+
+        //verifica se sessao email está definida e se for diferente e vazio
+        //empurra a requisição
+        if(isset($_SESSION['email']) && $_SESSION['email'] != '') {
             return $next($request);
         } else {
-            return Response('ACESSO NEGADO! Autenticação necessária.');
+            //passando parametro de erro opcional da rota
+            return redirect()->route('site.login', ['erro' => 2]);
         }
     }
 }

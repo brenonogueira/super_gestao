@@ -22,21 +22,14 @@ Route::get('/contato', [\App\Http\Controllers\ContatoController::class, 'contato
 
 Route::post('/contato', [\App\Http\Controllers\ContatoController::class, 'salvar'])->name('site.contato');
 
-Route::get('/login', [\App\Http\Controllers\LoginController::class, 'index'])->name('site.login');
+Route::get('/login/{erro?}', [\App\Http\Controllers\LoginController::class, 'index'])->name('site.login');
 Route::post('/login', [\App\Http\Controllers\LoginController::class, 'autenticar'])->name('site.login');
 
 // criando prefixo para agrupar rotas e //passando request pelo middleware autenticacao
 Route::middleware('autenticacao:perfil')->prefix('/app')->group(function () {
-
-    Route::get('/clientes', function () {
-        return 'clientes';
-    })->name('app.clientes');
-
-    Route::get('/fornecedores', function () {
-        return 'fornecedores';
-    })->name('app.fornecedores');
-
-    Route::get('/produtos', function () {
-        return 'produtos';
-    })->name('app.produtos');
+    Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('app.home');
+    Route::get('/sair', [\App\Http\Controllers\LoginController::class, 'sair'])->name('app.sair');
+    Route::get('/cliente', [\App\Http\Controllers\ClienteController::class, 'index'])->name('app.cliente');
+    Route::get('/fornecedor', [\App\Http\Controllers\FornecedorController::class, 'index'] )->name('app.fornecedor');
+    Route::get('/produto', [\App\Http\Controllers\ProdutoController::class, 'index'])->name('app.produto');
 });

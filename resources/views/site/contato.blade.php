@@ -33,7 +33,7 @@
         </div>
         <div class="localizacao">
             <h2>Localização</h2>
-            <img src="{{ asset('img/mapa.png') }}">
+            <img src="{{ asset('img/mapa.png') }}" width="75">
         </div>
     </div>
 @endsection

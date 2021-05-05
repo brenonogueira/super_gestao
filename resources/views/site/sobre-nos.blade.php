@@ -30,7 +30,7 @@
         </div>
         <div class="localizacao">
             <h2>Localização</h2>
-            <img src="img/mapa.png">
+            <img src="img/mapa.png" width="75">
         </div>
     </div>
 @endsection
