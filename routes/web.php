@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\PrincipalController;
-
+use \App\Http\Middleware\AutenticacaoMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,12 +22,11 @@ Route::get('/contato', [\App\Http\Controllers\ContatoController::class, 'contato
 
 Route::post('/contato', [\App\Http\Controllers\ContatoController::class, 'salvar'])->name('site.contato');
 
-Route::get('/login', function () {
-    return 'login';
-})->name('site.login');
+Route::get('/login', [\App\Http\Controllers\LoginController::class, 'index'])->name('site.login');
+Route::post('/login', [\App\Http\Controllers\LoginController::class, 'autenticar'])->name('site.login');
 
-// criando prefixo para agrupar rotas
-Route::prefix('/app')->group(function () {
+// criando prefixo para agrupar rotas e //passando request pelo middleware autenticacao
+Route::middleware('autenticacao:perfil')->prefix('/app')->group(function () {
 
     Route::get('/clientes', function () {
         return 'clientes';

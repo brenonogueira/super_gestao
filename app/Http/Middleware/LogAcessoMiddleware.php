@@ -22,8 +22,8 @@ class LogAcessoMiddleware
         $rota = $request->getRequestUri();
         //chamando metodo estático creatic chamando array com coluna e valor que será imposto nela
         LogAcesso::create(['log' => "$ip requisitou acesso a $rota"]);
+        return $next($request);
         //$request - manipular
-        // return $next($request);
-        return Response('Chegamos no middleware e finalizamos nele');
+        //return Response('Chegamos no middleware e finalizamos nele');
     }
 }
