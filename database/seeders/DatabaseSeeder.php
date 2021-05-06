@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         //chamando SiteContatoSeeder para popular db
-        $this->call(SiteContatoSeeder::class);
+      //  $this->call(SiteContatoSeeder::class);
         $this->call(MotivoContatoSeeder::class);
     }
 }
