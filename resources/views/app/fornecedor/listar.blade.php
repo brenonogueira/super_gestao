@@ -36,15 +36,18 @@
                                     <td>{{$fornecedor->site}}</td>
                                     <td>{{$fornecedor->uf}}</td>
                                     <td>{{$fornecedor->email}}</td>
-                                    <td>excluir</td>
+                                    <td><a href="{{ route('app.fornecedor.excluir', $fornecedor->id) }}">Excluir</a></td>
                                     <td><a href="{{ route('app.fornecedor.editar', $fornecedor->id) }}">Editar</a></td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </thead>
                 </table>
+                {{-- metodo appends() espera o parametro, pega as informações e anexa no body da requisição do link --}}
+                {{ $fornecedores->appends($request)->links() }} <br>
+
+                {{ $fornecedores->total() }} - Total de registros encontrados
             </div>
         </div>
-
   </div>
 @endsection
