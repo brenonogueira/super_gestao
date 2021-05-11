@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\PrincipalController;
+use App\Http\Controllers\ProdutoController;
 use \App\Http\Middleware\AutenticacaoMiddleware;
 
 /*
@@ -43,6 +44,6 @@ Route::middleware('autenticacao:perfil')->prefix('/app')->group(function () {
     Route::get('/fornecedor/excluir/{id}', [\App\Http\Controllers\FornecedorController::class, 'excluir'] )->name('app.fornecedor.excluir');
 
 
-
-    Route::get('/produto', [\App\Http\Controllers\ProdutoController::class, 'index'])->name('app.produto');
+    //produtos
+    Route::resource('produto', ProdutoController::class);
 });
